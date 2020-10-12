@@ -1,6 +1,12 @@
 <?php
+interface Account{
+    public function register($pdo);
+    public function login($pdo);
+    // public function changepassword($pdo);
+    // public function logout($pdo);
+}
 
-class User {
+class User implements Account{
         //properties 
         protected $username;
         protected $password;
