@@ -18,16 +18,12 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title text-center">Register</h5>
-                <form class="form-signin">
+                <form class="form-signin" action="index.php" method="POST">
                   <div class="form-label-group">
-                    <input type="text" id="firstname" name="fname" class="form-control" placeholder="First Name" required autofocus>
-                    <label for="firstname">First Name</label>
+                    <input type="text" id="fullname" name="fullName" class="form-control" placeholder="Full Name" required autofocus>
+                    <label for="fullname">Full Name</label>
                   </div>
-                  <div class="form-label-group">
-                    <input type="text" id="lastname" name="lname" class="form-control" placeholder="Last Name" required autofocus>
-                    <label for="lastname">Last Name</label>
-                  </div>
-    
+<!--                 
                   <div class="form-label-group">
                     <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required>
                     <label for="email">Email address</label>
@@ -40,20 +36,23 @@
                     <input type="file" id="photo" name="photo" class="form-control" placeholder="Profile Photo" required>
                     <label for="photo">Profile Photo</label>
                   </div>
-                 
+                  -->
                   <hr>
-    
                   <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    <label for="inputPassword">Password</label>
+                    <input type="text" id="myusername" name="username" class="form-control" placeholder="Username" required>
+                    <label for="myusername">Username</label>
                   </div>
-                  
+                  <div class="form-label-group">
+                    <input type="password" id="mypassword" name="password" class="form-control" placeholder="Password" required>
+                    <label for="mypassword">Password</label>
+                  </div>
+<!--                   
                   <div class="form-label-group">
                     <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
                     <label for="inputConfirmPassword">Confirm password</label>
-                  </div>
+                  </div> -->
     
-                  <button class="btn btn-lg btn-info btn-block text-uppercase" type="submit">Register</button>
+                  <button class="btn btn-lg btn-info btn-block text-uppercase" type="submit" name="register">Register</button>
                  <li><a class="d-block text-center mt-2 small" href="http://localhost/phplogin/login.php">Log In</a></li> 
                   <hr class="my-4">
                   <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
