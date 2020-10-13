@@ -18,17 +18,18 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title text-center">Change Password</h5>
-                <form class="form-signin">               
+                <form class="form-signin" >               
                   <hr>
+
                   <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="inputPassword" name ="password" class="form-control" placeholder="Password" required>
                     <label for="inputPassword">Password</label>
                   </div>   
                   <div class="form-label-group">
-                    <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="inputConfirmPassword" name="confirmpassword" class="form-control" placeholder="Password" required>
                     <label for="inputConfirmPassword">Confirm password</label>
                   </div>
-                  <button class="btn btn-lg btn-warning btn-block text-uppercase" type="submit">Change Password</button>
+                  <button class="btn btn-lg btn-warning btn-block text-uppercase" type="submit"name="resetpassword" >Change Password</button>
                  
                   <a class="d-block text-center mt-2 small" href="http://localhost/phplogin/login.php">Log in</a>
                   <hr class="my-4">
