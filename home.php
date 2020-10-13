@@ -18,6 +18,9 @@
     <button class="btn btn-lg btn-primary btn-block text-uppercase" id ="logoutbutton" type="submit">
         <a href="http://localhost/phplogin/login.php">Log out</a>
     </button>
+    <button class="btn btn-lg btn-primary btn-block text-uppercase" id ="logoutbutton" type="submit">
+        <a href="http://localhost/phplogin/changepassword.php">Change password</a>
+    </button>
 </div>
             
            

@@ -23,7 +23,7 @@
                     <input type="text" id="fullname" name="fullName" class="form-control" placeholder="Full Name" required autofocus>
                     <label for="fullname">Full Name</label>
                   </div>
-<!--                 
+                
                   <div class="form-label-group">
                     <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required>
                     <label for="email">Email address</label>
@@ -36,7 +36,7 @@
                     <input type="file" id="photo" name="photo" class="form-control" placeholder="Profile Photo" required>
                     <label for="photo">Profile Photo</label>
                   </div>
-                  -->
+                 
                   <hr>
                   <div class="form-label-group">
                     <input type="text" id="myusername" name="username" class="form-control" placeholder="Username" required>

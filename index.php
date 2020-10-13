@@ -1,43 +1,27 @@
 <?php
-    // include_once 'user.php';
-    // include_once 'db.php';
-    
-
-    // $con = new DBConnector();
-    // $pdo = $con->connectToDB();
-
-    // $event = isset($_POST['event']);
-    // if($event == "register"){
-    //     //register
-    //     $fullName = $_POST['fullName'];
-    //     $username = $_POST['username'];
-    //     $password = $_POST['password'];
-    //     $user = new User($username, $password);
-    //     $user->setFullName($fullName);
-    //     echo $user->register($pdo);
-    // }else {
-    //     //login
-    //     $username = isset($_POST['username']);
-    //     $password = isset($_POST['password']);
-    //     $user = new User($username, $password);
-    //     echo $user->login($pdo);
-    // } 
-
     include_once 'user.php';
     include_once 'db.php';
-    
 
     $con = new DBConnector();
     $pdo = $con->connectToDB();
     if(isset($_POST["register"])){
-        //Setting variables
+        //Setting variables  $useremail;
+        // protected $usercity;
+        // protected $profile_photo;
         $fullName=$_POST['fullName'];
         $username=$_POST['username'];
+        $useremail=$_POST['email'];
+        $usercity=$_POST['city'];
+        $profile_photo=$_POST['photo'];
         $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
 
         //creating an object from the user class
         $person=new User($username,$password);
         $person->setFullName($fullName);
+        $person->setEmail($useremail);
+        $person->setCity($usercity);
+        $person->setProfilePhoto($profile_photo);
+
 
         echo $person->register($pdo);
         header("Location: http://localhost/phplogin/login.php"); 
@@ -54,5 +38,5 @@
         echo $person->login($pdo);
         header("Location: http://localhost/phplogin/home.php"); 
     }
-        
+
 ?>
