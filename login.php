@@ -1,6 +1,9 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +34,7 @@
                 <label for="mypassword">Password</label>
               </div>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="login">Log in</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="loginuser" >Log in</button>
               <a class="d-block text-center mt-2 small" href="http://localhost/phplogin/register.php">Sign Up</a>
               <a class="d-block text-center mt-2 small" href="http://localhost/phplogin/changepassword.php">Change password</a>
               <hr class="my-4">

@@ -1,7 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
 interface Account{
     public function register($pdo);
     public function login($pdo);
@@ -17,10 +15,26 @@ class User implements Account{
         protected $useremail;
         protected $usercity;
         protected $profile_photo;
+
         //class constructor 
         function __construct($user, $pass){
             $this->username =$user;
             $this->password = $pass;
+        }
+        public function setUsername ($uname){
+        	$this->username = $uname;
+        }
+        //full name getter
+        public function getUsername (){
+        	return $this->username;
+        }
+
+        public function setPassword ($upass){
+        	$this->password = $upass;
+        }
+        //full name getter
+        public function getPassword (){
+        	return $this->password;
         }
 
         //full name setter 
@@ -64,7 +78,7 @@ class User implements Account{
         public function register ($pdo){
             $passwordHash = password_hash($this->password,PASSWORD_DEFAULT);
             try {
-                $stmt = $pdo->prepare ('INSERT INTO users (full_name,username,profile_photo,email,city,password) VALUES(?,?,?,?,?,?)');
+                $stmt = $pdo->prepare ('INSERT INTO users (full_name,email,city,profile_photo,username,password) VALUES(?,?,?,?,?,?)');
                 $stmt->execute([$this->getFullName(),$this->getEmail(),$this->getCity(),$this->getProfilePhoto(),$this->username,$passwordHash]);
                 return "Registration was successful";
             } catch (PDOException $e) {

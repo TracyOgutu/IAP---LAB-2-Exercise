@@ -1,42 +1,50 @@
 <?php
-    include_once 'user.php';
-    include_once 'db.php';
 
-    $con = new DBConnector();
-    $pdo = $con->connectToDB();
-    if(isset($_POST["register"])){
-        //Setting variables  $useremail;
-        // protected $usercity;
-        // protected $profile_photo;
-        $fullName=$_POST['fullName'];
-        $username=$_POST['username'];
-        $useremail=$_POST['email'];
-        $usercity=$_POST['city'];
-        $profile_photo=$_POST['photo'];
-        $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
+include_once 'user.php';
+include_once 'db.php';
 
-        //creating an object from the user class
-        $person=new User($username,$password);
-        $person->setFullName($fullName);
-        $person->setEmail($useremail);
-        $person->setCity($usercity);
-        $person->setProfilePhoto($profile_photo);
+$con = new DBConnector();
+$pdo = $con->connectToDB();
 
+if (isset($_POST["register"])) {
+    //Setting variables  $useremail;
+    // protected $usercity;
+    // protected $profile_photo;
+    $fullName = $_POST["fullName"];
+    $useremail = $_POST["email"];
+    $usercity = $_POST["city"];
+    $profile_photo = $_POST["photo"];
+    $username = $_POST["username"];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        echo $person->register($pdo);
-        header("Location: http://localhost/phplogin/login.php"); 
+    //creating an object from the user class
+    $person = new User($username, $password);
+    $person->setFullName($fullName);
+    $person->setEmail($useremail);
+    $person->setCity($usercity);
+    $person->setProfilePhoto($profile_photo);
 
+    echo $person->register($pdo);
+    header("Location: http://localhost/phplogin/login.php");
+}
+
+if(isset($_POST["loginuser"])){
+    if (empty($_POST["username"]) || empty($_POST["password"])) {
+        $message = '<label>All fields are required</label>';
+    } else {
+
+    $username=$_POST["username"];
+    $password=password_hash($_POST["password"],PASSWORD_DEFAULT);
+
+    //Creating an object from the user class
+    $person=new User($username,$password);
+    $person->setUsername($username);
+    $person->setPassword($password);
+    echo $person->login($pdo);
+    header("Location: http://localhost/phplogin/home.php"); 
+        
     }
+}
 
-    if(isset($_POST["login"])){
-        //Setting variables
-        $username=$_POST['username'];
-        $password=$_POST['password'];
 
-        //Creating an object from the user class
-        $person=new User($username,$password);
-        echo $person->login($pdo);
-        header("Location: http://localhost/phplogin/home.php"); 
-    }
 
-?>
