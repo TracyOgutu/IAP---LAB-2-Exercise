@@ -25,12 +25,12 @@
             <h5 class="card-title text-center">Log in</h5>
             <form class="form-signin" action="index.php" method="POST">
               <div class="form-label-group">
-                <input type="text" id="myusername" name="username" class="form-control" placeholder="Username" required>
+                <input type="text" id="myusername" name="myusername" class="form-control" placeholder="Username" required>
                 <label for="myusername">Username</label>
               </div>
               <hr>
               <div class="form-label-group">
-                <input type="password" id="mypassword" name="password" class="form-control" placeholder="Password" required>
+                <input type="password" id="mypassword" name="mypassword" class="form-control" placeholder="Password" required>
                 <label for="mypassword">Password</label>
               </div>
 

@@ -15,7 +15,7 @@ if (isset($_POST["register"])) {
     $usercity = $_POST["city"];
     $profile_photo = $_POST["photo"];
     $username = $_POST["username"];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
 
     //creating an object from the user class
     $person = new User($username, $password);
@@ -29,22 +29,45 @@ if (isset($_POST["register"])) {
 }
 
 if(isset($_POST["loginuser"])){
-    if (empty($_POST["username"]) || empty($_POST["password"])) {
-        $message = '<label>All fields are required</label>';
-    } else {
-
-    $username=$_POST["username"];
-    $password=password_hash($_POST["password"],PASSWORD_DEFAULT);
-
-    //Creating an object from the user class
-    $person=new User($username,$password);
-    $person->setUsername($username);
-    $person->setPassword($password);
-    echo $person->login($pdo);
-    header("Location: http://localhost/phplogin/home.php"); 
+    $username=$_POST["myusername"];
+    $password=$_POST["mypassword"];
+    $user = new User($username, $password);
+    echo $user->login($pdo);
+    
+    
         
     }
-}
+// include_once 'user.php';
+//     include_once 'db.php';
+
+//     $con = new DBConnector();
+//     $pdo = $con->connectToDB();
+
+//     $event = $_POST['event'];
+//     if($event == "register"){
+//         //register
+//         $fullName = $_POST['fullName'];
+//         $useremail = $_POST["useremail"];
+//         $usercity = $_POST["usercity"];
+//         $profile_photo = $_POST["profile_photo"];
+//         $username = $_POST['username'];
+//         $password = $_POST['password'];
+//         $user = new User($username, $password);
+//         $user->setFullName($fullName);
+//         $user->setEmail($useremail);
+//         $user->setCity($usercity);
+//         $user->setProfilePhoto($profile_photo);
+
+//         echo $user->register($pdo);
+//     }else {
+//         //login
+//         $username = $_POST['username'];
+//         $password = $_POST['password'];
+//         $user = new User($username, $password);
+//         echo $user->login($pdo);
+//     } 
+
+?>
 
 
 

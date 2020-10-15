@@ -92,18 +92,23 @@ class User implements Account{
         */
         public function login ($pdo){
             try {
-                $stmt = $pdo->prepare("SELECT password FROM users WHERE username=?");
+                $stmt = $pdo->prepare("SELECT * FROM users WHERE username=?");
                 $stmt->execute([$this->username]);
+                
                 $row = $stmt->fetch();
+              
                 if($row == null){
                     return "This account does not exist";
-                }
-                if (password_verify($this->password,$row['password'])){
-                	return "Correct password.Login successful";
-                }
-                else{
-                    die("Your username or password is not correct") ;
-                }
+                } else {
+                    if (password_verify($this->password,$row['password'])){
+                        header("Location: http://localhost/phplogin/home.php"); 
+                        return "Correct password.Login successful";
+                       
+                    }
+                    else{
+                        die("Your username or password is not correct") ;
+                    }
+            }
                
             } catch (PDOException $e) {
             	return $e->getMessage();
