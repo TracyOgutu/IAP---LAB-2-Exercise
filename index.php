@@ -28,15 +28,29 @@ if (isset($_POST["register"])) {
     header("Location: http://localhost/phplogin/login.php");
 }
 
-if(isset($_POST["loginuser"])){
-    $username=$_POST["myusername"];
-    $password=$_POST["mypassword"];
+if (isset($_POST["loginuser"])) {
+    $username = $_POST["myusername"];
+    $password = $_POST["mypassword"];
     $user = new User($username, $password);
     echo $user->login($pdo);
+}
+
+
+
+if (isset($_POST['resetpassword'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $newpassword = $_POST['newpassword'];
+
+    $user = new User($username,$password);
+    $user->setNewpassword($newpassword);
+
+    echo $user->changepassword($pdo);
     
     
-        
-    }
+}
+
+//postman 
 // include_once 'user.php';
 //     include_once 'db.php';
 
@@ -59,15 +73,26 @@ if(isset($_POST["loginuser"])){
 //         $user->setProfilePhoto($profile_photo);
 
 //         echo $user->register($pdo);
-//     }else {
+
+//     }else if ($event == "login"){
 //         //login
 //         $username = $_POST['username'];
 //         $password = $_POST['password'];
 //         $user = new User($username, $password);
 //         echo $user->login($pdo);
-//     } 
 
-?>
+//     } else if ($event == "changepassword"){
+//     $username = $_POST['username'];
+//     $password = $_POST['password'];
+//     $newpassword = $_POST['newpassword'];
+    
+
+//     $user = new User($username,$password);
+//     $user->setNewpassword($newpassword);
+
+//     echo $user->changepassword($pdo);
+
+    
 
 
-
+// }

@@ -21,16 +21,19 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title text-center">Change Password</h5>
-                <form class="form-signin" >               
+                <form class="form-signin" method="POST" action="index.php">               
                   <hr>
-
+                  <div class="form-label-group">
+                    <input type="text" id="myusername" name="username" class="form-control" placeholder="Username" required>
+                    <label for="myusername">Username</label>
+                  </div>
                   <div class="form-label-group">
                     <input type="password" id="inputPassword" name ="password" class="form-control" placeholder="Password" required>
-                    <label for="inputPassword">Password</label>
+                    <label for="inputPassword">Old Password</label>
                   </div>   
                   <div class="form-label-group">
-                    <input type="password" id="inputConfirmPassword" name="confirmpassword" class="form-control" placeholder="Password" required>
-                    <label for="inputConfirmPassword">Confirm password</label>
+                    <input type="password" id="inputConfirmPassword" name="newpassword" class="form-control" placeholder="Password" required>
+                    <label for="inputConfirmPassword">New password</label>
                   </div>
                   <button class="btn btn-lg btn-warning btn-block text-uppercase" type="submit"name="resetpassword" >Change Password</button>
                  
