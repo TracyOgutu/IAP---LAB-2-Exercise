@@ -45,10 +45,13 @@ if (isset($_POST['resetpassword'])) {
     $user = new User($username,$password);
     $user->setNewpassword($newpassword);
 
+    //I AM STRAIGHT
+
     echo $user->changepassword($pdo);
     
     
 }
+else{ echo 'IDK';}
 
 //postman 
 // include_once 'user.php';

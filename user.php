@@ -128,6 +128,9 @@ class User implements Account{
         $stmt->execute([$this->username]);
         $row = $stmt->fetch();
         var_dump($row['email']);
+        var_dump($row['password']);//db hash pass
+        var_dump($this->password); //oldpass
+        var_dump($this->getNewpassword()); //newpass
         
         if($row == null){
             return "This account does not exist";
@@ -135,9 +138,16 @@ class User implements Account{
             //If the user exists 
                 try{
                     //Updating the db to the new password
-                    $stmt=$pdo->prepare("UPDATE users SET password=? WHERE username=? AND password=?");
-                    $stmt->execute([$this->getNewpassword(),$this->username,$this->password]);
+                   
+                    $info=[
+                            'username'=>$this->username,
+                            //'oldpass'=>$this->password,
+                            'newpass'=>$this->getNewpassword()
+                    ];
+                    $stmt=$pdo->prepare("UPDATE users SET password=:newpass WHERE username=:username");
+                    $stmt->execute($info);
                     $outcome=$stmt->fetch();
+                    //var_dump($this->getNewpassword());
                     
                     if($outcome){
                         //Checking if the password has been updated. 
