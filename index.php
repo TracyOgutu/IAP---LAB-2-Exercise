@@ -51,7 +51,13 @@ if (isset($_POST['resetpassword'])) {
     
     
 }
-else{ echo 'IDK';}
+
+if(isset($_POST['logout'])){
+    session_start();
+    $user = new User($_SESSION['username'],$password);
+    echo $user->logout($pdo);
+    
+}
 
 //postman 
 // include_once 'user.php';

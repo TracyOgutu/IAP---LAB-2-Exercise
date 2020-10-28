@@ -18,10 +18,10 @@
             <h2 class="card-title text-center">Welcome Home</h2><br>
          </div><br>       
 <div class="col-lg-3">
-    <button class="btn btn-lg btn-primary btn-block text-uppercase" id ="logoutbutton" type="submit">
+    <button class="btn btn-lg btn-primary btn-block text-uppercase" id ="logoutbutton" type="submit" name="logout">
         <a href="http://localhost/phplogin/login.php">Log out</a>
     </button>
-    <button class="btn btn-lg btn-primary btn-block text-uppercase" id ="logoutbutton" type="submit">
+    <button class="btn btn-lg btn-primary btn-block text-uppercase" id ="logoutbutton" type="submit" name="resetpassword">
         <a href="http://localhost/phplogin/changepassword.php">Change password</a>
     </button>
 </div>
