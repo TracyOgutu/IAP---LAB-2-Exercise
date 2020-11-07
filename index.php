@@ -1,22 +1,18 @@
 <?php
-
 include_once 'user.php';
 include_once 'db.php';
+
 
 $con = new DBConnector();
 $pdo = $con->connectToDB();
 
 if (isset($_POST["register"])) {
-    //Setting variables  $useremail;
-    // protected $usercity;
-    // protected $profile_photo;
     $fullName = $_POST["fullName"];
     $useremail = $_POST["email"];
     $usercity = $_POST["city"];
     $profile_photo = $_POST["photo"];
     $username = $_POST["username"];
     $password = $_POST['password'];
-
     //creating an object from the user class
     $person = new User($username, $password);
     $person->setFullName($fullName);
@@ -36,27 +32,19 @@ if (isset($_POST["loginuser"])) {
 }
 
 
-
 if (isset($_POST['resetpassword'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $newpassword = $_POST['newpassword'];
-
-    $user = new User($username,$password);
+    $user = new User($username, $password);
     $user->setNewpassword($newpassword);
-
-    //I AM STRAIGHT
-
     echo $user->changepassword($pdo);
-    
-    
 }
 
-if(isset($_POST['logout'])){
-    session_start();
-    $user = new User($_SESSION['username'],$password);
-    echo $user->logout($pdo);
-    
+if (isset($_POST['logout'])) {
+    $instance = User::create();
+    $instance->logout($pdo);
+   
 }
 
 //postman 

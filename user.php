@@ -1,5 +1,4 @@
 <?php
-
 interface Account
 {
     public function register($pdo);
@@ -7,7 +6,6 @@ interface Account
     public function changepassword($pdo);
     public function logout($pdo);
 }
-
 class User implements Account
 {
     //properties 
@@ -24,6 +22,12 @@ class User implements Account
     {
         $this->username = $user;
         $this->password = $pass;
+    }
+
+    public static function create() {
+        $reflection = new ReflectionClass("User");
+        $instance = $reflection->newInstanceWithoutConstructor();
+        return $instance;
     }
 
     public function setNewpassword($newpass)
@@ -121,11 +125,16 @@ class User implements Account
             $stmt->execute([$this->username]);
 
             $row = $stmt->fetch();
-
             if ($row == null) {
                 return "This account does not exist";
             } else {
                 if (password_verify($this->password, $row['password'])) {
+                   
+                    session_start();
+                    $_SESSION['username']=$row['username'];
+                    $_SESSION['fullname']=$row['full_name'];
+                    $_SESSION['email']=$row['email'];
+                    $_SESSION['photo']=$row['profile_photo'];
                     header("Location: http://localhost/phplogin/home.php"); 
                     return "Correct password.Login successful";
                 } else {
@@ -166,7 +175,7 @@ class User implements Account
 
     public function logout($pdo){
         session_start();
-        unset($_SESSION['username']);
+        unset($_SESSION['username'], $_SESSION['fullname'],  $_SESSION['email'],$_SESSION['photo']);
         session_destroy();
         header("Location:http://localhost/phplogin/login.php");
 
